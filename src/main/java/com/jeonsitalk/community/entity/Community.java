@@ -1,4 +1,4 @@
-package com.jeonsitalk.Entity;
+package com.jeonsitalk.community.entity;
 
 public class Community {
 }

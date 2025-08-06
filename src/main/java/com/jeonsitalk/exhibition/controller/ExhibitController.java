@@ -1,4 +1,4 @@
-package com.jeonsitalk.controller;
+package com.jeonsitalk.exhibition.controller;
 
 public class ExhibitController {
 }

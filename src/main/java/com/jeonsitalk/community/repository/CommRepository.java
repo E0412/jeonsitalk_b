@@ -1,4 +1,4 @@
-package com.jeonsitalk.repository;
+package com.jeonsitalk.community.repository;
 
 public interface CommRepository {
 }
