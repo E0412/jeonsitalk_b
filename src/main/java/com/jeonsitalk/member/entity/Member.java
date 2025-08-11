@@ -1,9 +1,6 @@
 package com.jeonsitalk.member.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -18,17 +15,21 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; //부여되는 아이디 auto_increment
 
-    private String memberId; //로그인 아이디
+    @Column(unique = true,  nullable = false, updatable = false)
+    private String memberId; //로그인 아이디, 중복x
 
-    private String name; //닉네임
+    @Column(nullable = false)
+    private String nickname; //닉네임
 
-    private String email; //이메일
-
+    @Column(nullable = false)
     private String password; //비밀번호
 
-    private String nickname; //닉네임, 선택요소지만 랜덤으로 값을 넣을예정
+    @Column(nullable = false)
+    private String email; //이메일
 
-//   private String userInfo 유저 소개글 - 마이페이지 구현시 필요
-//    private String userFile 유저 프로필 사진 - 파일 업로드 구현시 필요
+    //관리자, 일반 사용자로 구분
+    @Enumerated(EnumType.STRING) //문자열로 읽어옴
+    @Column(nullable = false)
+    private MemberRole role;
 
 }
