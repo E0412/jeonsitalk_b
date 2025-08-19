@@ -15,16 +15,16 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; //부여되는 아이디 auto_increment
 
-    @Column(unique = true,  nullable = false, updatable = false)
+    @Column(unique = true,  nullable = false, updatable = false, length = 20)
     private String memberId; //로그인 아이디, 중복x
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String nickname; //닉네임
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 40)
     private String password; //비밀번호
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String email; //이메일
 
     //관리자, 일반 사용자로 구분

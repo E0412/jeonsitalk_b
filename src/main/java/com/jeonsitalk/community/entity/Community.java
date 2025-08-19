@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -22,14 +23,17 @@ public class Community {
     @Column(name = "post_id")
     private Long postId; //게시글 식별번호
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
+    @Column(length = 50)
     private String title; //글제목
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content; //내용
 
-    private Date created; //글 작성 날짜
+    //issue : 작성 날짜가 자동 등록이 안됨 수정 필요
+    @Column(updatable = false)
+    private LocalDateTime created; //글 작성 날짜
 
-    private int views; //조회수
+    private Integer views; //조회수
 
 }

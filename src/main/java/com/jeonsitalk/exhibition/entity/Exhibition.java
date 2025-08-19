@@ -19,9 +19,10 @@ public class Exhibition {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long exId; //식별 id, auto increment
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String exTitle; //전시회 이름
 
+    @Column(columnDefinition = "TEXT")
     private String description; //전시회 설명
 
     @Column(nullable = false)
@@ -29,17 +30,22 @@ public class Exhibition {
 
     private LocalDate endDate; //종료일
 
+    @Column(length = 60)
     private String contact; //문의, 연락처
 
-    @Column(nullable = false)
+    @Column(nullable = false,  length = 100)
     private String location; //장소
 
+    @Column(length = 40)
     private String openTime; //이용 시간
 
+    @Column(length = 40)
     private String closedDate; //휴무일
 
+    @Column(length = 40)
     private String price; //가격
 
+    @Column(length = 100)
     private String image; //이미지
 
 }
