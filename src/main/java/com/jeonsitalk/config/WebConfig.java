@@ -6,18 +6,17 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
-/*
 //cors 에러 대비 configure
 @Configuration
 public class WebConfig {
 
     @Bean
-    public WebMvcConfigurer webMvcConfigurer() {
+    public WebMvcConfigurer corsConfigurer() {
 
         return new WebMvcConfigurer() {
 
             @Override
-            public void corsConfigure(CorsRegistry registry) {
+            public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") //모든 경로
                         .allowedOrigins("http://localhost:3000")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
@@ -26,6 +25,4 @@ public class WebConfig {
             }
         };
     }
-
 }
-*/

@@ -7,24 +7,33 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/community")
 @RequiredArgsConstructor
 public class CommController {
 
-    private final CommRepository commRepository;
     private final CommService commService;
 
-    @PostMapping("/writes")
-    Community insertTestData(@RequestBody Community community) {
-        return commRepository.save(community);
-    }
-
+    //service 계층을 추가하여 분리
+    //커뮤니티 글 전체 조회
     @GetMapping("/lists")
-    List<Community> getAllCommunities() {
-        return commRepository.findAll();
+    public List<Community> communityList() {
+        return commService.communityList();
     }
 
+    //글 1개 조회(상세)
+    @GetMapping("/lists/{id}")
+    public Community communityDetail(@PathVariable("id") Long id) {
+        Optional<Community> lists = commService.communityDetail(id);
+        return lists.orElse(null);
+    }
+
+    //글 작성
+    @PostMapping("/writes")
+    public Community communityWrite(@RequestBody Community community) {
+        return commService.communityWrite(community);
+    }
 
 }
