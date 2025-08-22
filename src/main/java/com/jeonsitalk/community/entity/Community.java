@@ -16,6 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 public class Community {
 
     @Id
@@ -24,7 +25,7 @@ public class Community {
     private Long postId; //게시글 식별번호
 
     @Column(length = 50)
-    private String title; //닉네임 -> fk로 변경예정
+    private String title; //글 제목
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content; //내용

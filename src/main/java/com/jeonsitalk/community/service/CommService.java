@@ -26,13 +26,29 @@ public class CommService {
     }
 
     //게시글 작성 register or write
-    public Community communityWrite(Community community) {
-        return commRepository.save(community);
+    public Community communityWrite(Community write) {
+        return commRepository.save(write);
     }
 
     //게시글 수정
+    public Optional<Community> communityModify(Long id, Community community) {
 
+        return commRepository.findById(id).map(list -> {
+                        list.setTitle(community.getTitle());
+                        list.setContent(community.getContent());
+                        list.setProfileImg(community.getProfileImg());
+                        list.setName(community.getName());
+                        return commRepository.save(list);
+        });
+    }
 
     //게시글 삭제
+    public boolean communityDelete(Long id) {
+
+        return commRepository.findById(id).map(delete -> {
+                        commRepository.delete(delete);
+                        return true;
+        }).orElse(false);
+    }
 
 }

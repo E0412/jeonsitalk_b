@@ -1,7 +1,6 @@
 package com.jeonsitalk.community.controller;
 
 import com.jeonsitalk.community.entity.Community;
-import com.jeonsitalk.community.repository.CommRepository;
 import com.jeonsitalk.community.service.CommService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +33,19 @@ public class CommController {
     @PostMapping("/writes")
     public Community communityWrite(@RequestBody Community community) {
         return commService.communityWrite(community);
+    }
+
+    //글 수정
+    @PutMapping("/lists/{id}")
+    public Community communityUpdate(@RequestBody Community community, @PathVariable("id") Long id) {
+        Optional<Community> modify = commService.communityModify(id, community);
+        return modify.orElseThrow();
+    }
+
+    //글 삭제
+    @DeleteMapping("/lists/{id}")
+    public boolean communityDelete(@PathVariable("id") Long id) {
+        return commService.communityDelete(id);
     }
 
 }
