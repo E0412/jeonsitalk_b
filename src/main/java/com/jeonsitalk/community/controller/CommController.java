@@ -1,7 +1,9 @@
 package com.jeonsitalk.community.controller;
 
+import com.jeonsitalk.community.dto.CommModifyDto;
 import com.jeonsitalk.community.entity.Community;
 import com.jeonsitalk.community.service.CommService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,8 +43,8 @@ public class CommController {
 
     //글 수정
     @PutMapping("/lists/{id}")
-    public ResponseEntity<Community> communityUpdate(@RequestBody Community community, @PathVariable("id") Long id) {
-        Optional<Community> modify = commService.communityModify(id, community);
+    public ResponseEntity<Community> communityUpdate(@Valid @RequestBody CommModifyDto modifyDto, @PathVariable("id") Long id) {
+        Optional<Community> modify = commService.communityModify(id, modifyDto);
         return modify.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 

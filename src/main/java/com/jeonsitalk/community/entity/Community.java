@@ -2,14 +2,8 @@ package com.jeonsitalk.community.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Generated;
-import org.hibernate.generator.EventType;
-import org.springframework.data.annotation.CreatedDate;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Builder
@@ -37,11 +31,11 @@ public class Community {
     @Column(insertable = false, columnDefinition = "INTEGER DEFAULT 0")
     private Integer views; //조회수
 
-    //임시 컬럼 -> 로그인 및 마이페이지 제작시 fk로 변경
-    @Column(length = 50)
+    //임시 컬럼 -> 로그인 및 마이페이지 제작시 fk와 dto로 참조
+    @Column(length = 100, name = "profile_img")
     private String profileImg; //프로필 사진
 
-    @Column(length = 50)
-    private String name = "닉네임"; //닉네임
+    @Column(length = 20)
+    private String name; //닉네임
 
 }
