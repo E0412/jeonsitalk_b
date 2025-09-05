@@ -1,6 +1,7 @@
 package com.jeonsitalk.exhibition.controller;
 
 import com.jeonsitalk.exhibition.entity.Exhibition;
+import com.jeonsitalk.exhibition.service.ExhibitService;
 import com.jeonsitalk.exhibition.service.ExhibitServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -17,7 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ExhibitController {
 
-    private final ExhibitServiceImpl exhibitService;
+    private final ExhibitService exhibitService; //구현체가 아닌 인터페이스 호출
 
     //전시회 전체 조회, 페이지는 0부터 시작 16개씩 조회
     @GetMapping("/exlists")

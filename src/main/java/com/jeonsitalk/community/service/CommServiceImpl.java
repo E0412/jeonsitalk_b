@@ -51,7 +51,7 @@ public class CommServiceImpl implements CommService {
     @Override
     public boolean communityDelete(Long id) {
         return commRepository.findById(id).map(deletes -> {
-            commRepository.deleteById(id);
+                commRepository.delete(deletes);
                 return true;
         }).orElse(false);
     }
